@@ -1,0 +1,16 @@
+#encoding: utf-8
+file = open('c:/Users/Julia Julia Julia/Documents/Brasileiro 2024 (Srie A) - Dataset - Final.txt','r', encoding='utf-8')
+gols_por_horario = dict()
+gols_por_mes = dict()
+for i in file:
+    lista = i.split(',')
+    gols = lista[3].split('-')
+    gols_por_horario[lista[1]] = gols_por_horario.get(lista[1],0) + int(gols[0]) + + int(gols[1])
+    data = lista[0].split('-')
+    gols_por_mes[data[1]] = gols_por_mes.get(data[1],0) + int(gols[0]) + + int(gols[1])
+max_gols_por_horario_qtd= max(gols_por_horario.values())
+max_gols_por_horario  = max(gols_por_horario, key=gols_por_horario.get)
+print('A maior quantidade de gols foi marcado nos jogos de',max_gols_por_horario, ',com ',max_gols_por_horario_qtd, 'gols')
+max_gols_por_mes_qtd = max(gols_por_mes.values())
+max_gols_por_mes  = max(gols_por_mes, key=gols_por_mes.get)
+print('O mês com mais gols foi: ',max_gols_por_mes, ', com ',max_gols_por_mes_qtd, 'gols')
